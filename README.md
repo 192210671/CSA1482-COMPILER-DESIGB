@@ -62,4 +62,35 @@ int yywrap()
 {
     return 1;
 }
+```
+## 2. Check if Input is Digit
+   Description: This program checks whether the given input is a digit or not.
+   ->Source Code
+   ```sh
+%{
+#include <stdio.h>
+%}
+
+%%
+
+[0-9]+ { printf("Digit: %s\n", yytext); }
+.|\n { printf("Not a digit: %s\n", yytext); }
+
+%%
+
+int main()  
+{ 
+    yylex(); 
+    return 0;
+} 
+
+int yywrap()
+{
+    return 1;
+}
+```
+
+
+
+
 
