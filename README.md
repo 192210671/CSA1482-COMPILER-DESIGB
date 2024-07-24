@@ -4,7 +4,7 @@ This repository contains a collection of LEX (Lexical Analyzer) programs designe
 
 ## Table of Contents
 
-1. [Identify Capital Words](#Capital)
+1. [Identify Capital Words](#1-Identify-Capital-Words)
 2. [Check if Input is Digit](#2-check-if-input-is-digit)
 3. [Validate Mobile Numbers](#3-validate-mobile-numbers)
 4. [Count Vowels and Consonants](#4-count-vowels-and-consonants)
@@ -28,4 +28,38 @@ This repository contains a collection of LEX (Lexical Analyzer) programs designe
    ```sh
    flex program.l
    gcc lex.yy.c
-   a.exe 
+   a.exe
+## Advantages
+1. Simplifies lexical analysis by automating the creation of scanners.
+2. Can handle complex text patterns with ease.
+3. Efficient and fast processing of text input.
+## Disadvantages
+1. Limited to lexical analysis; not suitable for parsing more complex grammar without additional tools like 
+   YACC/Bison.
+2. Requires understanding of regular expressions and LEX syntax.
+## 1. Identify Capital Words
+   Description: This program identifies and prints capital words from the given input.
+->Source Code
+   ```sh
+%{
+#include <stdio.h>
+%}
+
+%%
+
+[A-Z]+ { printf("Capital word: %s\n", yytext); }
+.|\n { /* ignore other characters */ }
+
+%%
+
+int main()  
+{ 
+    yylex(); 
+    return 0;
+} 
+
+int yywrap()
+{
+    return 1;
+}
+
