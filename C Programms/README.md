@@ -7,7 +7,7 @@ This repository contains a collection of C programs related to compiler design. 
 1. [Identifying Tokens](#1-identifying-tokens)
 2. [Identifying Comments](#2-Identiying-Comments)
 3. [Identifying Operators](#3-identifying-operators)
-4. [Identifying words,nweline and characters](#4-identifying-words-newline-and-characters)
+4. [Identifying words,newline and characters](#4-identifying-words-newline-characters)
 5. [Intermediate Code Generation](#5-intermediate-code-generation)
 6. [Code Optimization Techniques](#6-code-optimization-techniques)
 7. [Code Generation](#7-code-generation)
@@ -190,7 +190,7 @@ int main()
 	}
 }
 ```
-## 4-Identifying Words Newline and Character
+## 4. Identifying Words Newline Characters
 SOURCE CODE
 ```c
 #include <stdio.h>
