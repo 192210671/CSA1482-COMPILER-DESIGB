@@ -5,7 +5,7 @@ This repository contains a collection of C programs related to compiler design. 
 ## Table of Contents
 
 1. [Identifying Tokens](#1-identifying-tokens)
-2. [Identifying Comments](#2-identiying-comments)
+2. [Identifying Comments](#2-identifying-comments)
 3. [Identifying Operators](#3-identifying-operators)
 4. [Identifying words,newline and characters](#4-identifying-words-newline-characters)
 5. [Intermediate Code Generation](#5-intermediate-code-generation)
