@@ -4,7 +4,7 @@ This repository contains a collection of LEX (Lexical Analyzer) programs designe
 
 ## Table of Contents
 
-1. [Identify Capital Words](#1-identify-capital-words)
+1. [Identify Capital Words](#Capital)
 2. [Check if Input is Digit](#2-check-if-input-is-digit)
 3. [Validate Mobile Numbers](#3-validate-mobile-numbers)
 4. [Count Vowels and Consonants](#4-count-vowels-and-consonants)
