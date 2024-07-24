@@ -5,7 +5,7 @@ This repository contains a collection of C programs related to compiler design. 
 ## Table of Contents
 
 1. [Identifying Tokens](#1-identifying-tokens)
-2. [Identifying Comments](#2-Identiying-Comments)
+2. [Identifying Comments](#2-identiying-comments)
 3. [Identifying Operators](#3-identifying-operators)
 4. [Identifying words,newline and characters](#4-identifying-words-newline-characters)
 5. [Intermediate Code Generation](#5-intermediate-code-generation)
@@ -98,6 +98,44 @@ int main()
 	  {
         printf("%c ",operators[j]);
       }
+}
+```
+## 2. Identifying Comments
+SOURCE CODE
+```c
+#include<stdio.h> 
+#include<conio.h> 
+int main()
+{
+	char com[30]; 
+	int i=2,a=0; 
+	printf("\n Enter comment:");
+	gets(com); 
+	if(com[0]=='/') 
+	{
+		if(com[1]=='/')
+			printf("\n It is a comment"); 
+		else if(com[1]=='*') 
+		{		
+			for(i=2;i<=30;i++)
+			{
+				if(com[i]=='*'&&com[i+1]=='/')
+				{
+					printf("\n It is a comment"); 
+					a=1; 
+					break;	
+				}
+				else 
+					continue; 
+			} 
+			if(a==0)
+				printf("\n It is not a comment");
+		}
+		else
+			printf("\n It is not a comment");
+	}
+	else 
+		printf("\n It is not a comment");
 }
 ```
 ## 3. Identifying Operators
