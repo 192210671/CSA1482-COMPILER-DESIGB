@@ -89,6 +89,263 @@ int yywrap()
     return 1;
 }
 ```
+## 3. Validate Mobile Numbers
+   Description: This program validates mobile numbers to ensure they follow a specific format.
+   ->Source Code
+   ```sh
+%{
+#include <stdio.h>
+%}
+
+%%
+
+[7-9][0-9]{9} { printf("Valid mobile number: %s\n", yytext); }
+.|\n { printf("Invalid mobile number: %s\n", yytext); }
+
+%%
+
+int main()  
+{ 
+    yylex(); 
+    return 0;
+} 
+
+int yywrap()
+{
+    return 1;
+}
+```
+## 4. Count Vowels and Consonants
+   Description: This program counts the number of vowels and consonants in the given input.
+   ->Source Code
+   ```sh
+%{
+#include <stdio.h>
+int vowels = 0;
+int consonants = 0;
+%}
+
+%%
+
+[aeiouAEIOU] { vowels++; }
+[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ] { consonants++; }
+.|\n { /* ignore other characters */ }
+
+%%
+
+int main()  
+{ 
+    yylex(); 
+    printf("Vowels: %d\n", vowels);
+    printf("Consonants: %d\n", consonants);
+    return 0;
+} 
+
+int yywrap()
+{
+    return 1;
+}
+```
+## 5. Separate Keywords and Identifiers
+   Description: This program separates keywords and identifiers from the given input.
+   ->Source Code
+   ```sh
+%{
+#include <stdio.h>
+#include <string.h>
+
+const char* keywords[] = {
+    "auto", "break", "case", "char", "const", "continue", "default",
+    "do", "double", "else", "enum", "extern", "float", "for", "goto",
+    "if", "int", "long", "register", "return", "short", "signed",
+    "sizeof", "static", "struct", "switch", "typedef", "union",
+    "unsigned", "void", "volatile", "while"
+};
+int is_keyword(const char* word) {
+    for (int i = 0; i < 32; ++i) {
+        if (strcmp(word, keywords[i]) == 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+%}
+
+%%
+
+[a-zA-Z_][a-zA-Z0-9_]* {
+    if (is_keyword(yytext)) {
+        printf("Keyword: %s\n", yytext);
+    } else {
+        printf("Identifier: %s\n", yytext);
+    }
+}
+.|\n { /* ignore other characters */ }
+
+%%
+
+int main()  
+{ 
+    yylex(); 
+    return 0;
+} 
+
+int yywrap()
+{
+    return 1;
+}
+```
+## 6. Count Positive and Negative Numbers
+   Description: This program identifies and counts positive and negative numbers.
+   ->Source Code
+```sh
+%{
+#include <stdio.h>
+int positive_count = 0;
+int negative_count = 0;
+%}
+
+%%
+
+[0-9]+ { positive_count++; printf("Positive number: %s\n", yytext); }
+[-][0-9]+ { negative_count++; printf("Negative number: %s\n", yytext); }
+.|\n { /* ignore other characters */ }
+
+%%
+
+int main()  
+{ 
+    yylex(); 
+    printf("Positive numbers: %d\n", positive_count);
+    printf("Negative numbers: %d\n", negative_count);
+    return 0;
+} 
+
+int yywrap()
+{
+    return 1;
+}
+```
+## 7. Recognize Numbers and Words
+   Description: This program recognizes numbers and words in a given statement.
+   ->Source Code
+```sh
+%{
+#include <stdio.h>
+%}
+
+%%
+
+[0-9]+ { printf("Number: %s\n", yytext); }
+[a-zA-Z]+ { printf("Word: %s\n", yytext); }
+.|\n { /* ignore other characters */ }
+
+%%
+
+int main()  
+{ 
+    yylex(); 
+    return 0;
+} 
+
+int yywrap()
+{
+    return 1;
+}
+```
+## 8. Accept String Starting with Vowel
+   Description: This program accepts strings that start with a vowel.
+   ->Source Code
+```sh
+%{
+#include <stdio.h>
+%}
+
+%%
+
+[aeiouAEIOU][a-zA-Z]* { printf("String starting with vowel: %s\n", yytext); }
+.|\n { /* ignore other characters */ }
+
+%%
+
+int main()  
+{ 
+    yylex(); 
+    return 0;
+} 
+
+int yywrap()
+{
+    return 1;
+}
+```
+## 9. Find Length of Longest Word
+   Description: This program finds the length of the longest word in the input.
+   ->Source Code
+```sh
+%{
+#include <stdio.h>
+int max_length = 0;
+%}
+
+%%
+
+[a-zA-Z]+ {
+    int length = strlen(yytext);
+    if (length > max_length) {
+        max_length = length;
+    }
+}
+.|\n { /* ignore other characters */ }
+
+%%
+
+int main()  
+{ 
+    yylex(); 
+    printf("Length of the longest word: %d\n", max_length);
+    return 0;
+} 
+
+int yywrap()
+{
+    return 1;
+}
+```
+## 10. Validate URLs
+   Description: This program validates URLs to ensure they follow a standard format.
+   ->Source Code
+```sh
+%{
+#include <stdio.h>
+%}
+
+%%
+
+http[s]?://[a-zA-Z0-9./?=_-]+ { printf("Valid URL: %s\n", yytext); }
+.|\n { printf("Invalid URL: %s\n", yytext); }
+
+%%
+
+int main()  
+{ 
+    yylex(); 
+```
+## Conclusion
+
+This repository demonstrates a variety of practical applications of LEX for lexical analysis and text processing. From simple tasks like counting vowels and identifying capital words to more complex validations like checking mobile numbers and URLs, each program showcases the versatility of LEX in handling different types of text inputs.
+
+**Key Takeaways:**
+- **LEX's Flexibility**: The ability to define patterns for text recognition and validation makes LEX a powerful tool for building lexical analyzers.
+- **Efficiency**: These programs highlight LEX's capability to process and analyze large volumes of text efficiently.
+- **Learning Tool**: For those new to lexical analysis or text processing, these examples serve as a useful learning resource to understand the foundational concepts and practical applications of LEX.
+
+Feel free to explore, modify, and extend these programs according to your needs. If you have any questions or suggestions, please open an issue or contribute with a pull request.
+
+Happy coding!
+   
+   
+   
 
 
 
